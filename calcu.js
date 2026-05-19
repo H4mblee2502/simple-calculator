@@ -1,15 +1,31 @@
-// Calculator Functions
+// Calculator Logic Functions
 
-const display = document.getElementById("display");
+let display = '';
 
-function appendToDisplay(input){
-    display.value += input;
+function appendNumber(number){
+    display += number;
+    document.getElementById('result').value = display;
 }
-
-function clearDisplay(){
-    display.value = ""
+function appendOperator(operator){
+    display += ` ${operator} `;
+    document.getElementById('result').value = display; 
 }
 
 function calculate(){
-    display.value = eval(display.value);
+    try{
+        display =  eval(display.replace('÷', '/').replace('x', '*'));
+        document.getElementById('result').value = display;
+    } catch {
+        document.getElementById('result').value = 'Error';
+    }
+}
+
+function clearDisplay(){
+    display = '';
+    document.getElementById('result').value  = '';
+}
+
+function backspace(){
+    let remove = document.getElementById('result');
+    display = remove.value = remove.value.slice(0, -1);
 }
