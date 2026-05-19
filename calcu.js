@@ -12,9 +12,27 @@ function appendOperator(operator){
 }
 
 function calculate(){
-    try{
-        display =  eval(display.replace('÷', '/').replace('x', '*'));
+    try {
+        // Secret code dictionary
+        const fun = {
+            '777': 'Libre moko Kape!!',
+            '143': 'I love you',
+            '80085': 'BOOBS',
+            '124': 'I Miss you '
+        };
+
+        // If what is on the screen matches one of our secret keys...
+        if (display in fun) {
+            document.getElementById('result').value = fun[display];
+            display = ''; 
+            return;
+        }
+
+        // Otherwise, do regular math
+        let mathExpression = display.replace(/x/g, '*').replace(/÷/g, '/');
+        display = eval(mathExpression);
         document.getElementById('result').value = display;
+        display = display.toString();
     } catch {
         document.getElementById('result').value = 'Error';
     }
