@@ -13,7 +13,7 @@ function appendOperator(operator){
 
 function calculate(){
     try {
-        // Secret code easter eggs dictionary
+        // Secret code dictionary
         const fun = {
             '777': 'Libre moko Kape!!',
             '143': 'I love you',
